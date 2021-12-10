@@ -12,7 +12,7 @@ default: main
 
 main:
 	mkdir -p $(BIN)
-	$(CC) -c src/jf.cc $(CCFLAGS) -o $(BIN)/jf
+	$(CC) src/jf.cc $(CCFLAGS) -o $(BIN)/jf
 	chmod +x $(BIN)/jf
 
 install: main
