@@ -1,4 +1,8 @@
-# jf: Simple Json Formatter #
+# jf: Simple JSON Formatter #
+
+## Introduction ##
+
+- Overwrite ugly JSON file(s) with prettier JSON file(s)
 
 ## Warning ##
 
