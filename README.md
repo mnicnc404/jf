@@ -1,4 +1,8 @@
-# Simple Json Formatter #
+# jf: Simple Json Formatter #
+
+## Warning ##
+
+- Do not use it on very large json file!
 
 ## Build ##
 
@@ -10,11 +14,11 @@ make
 
 ```
 sudo make install
-# or move bin/jq to your PATH
+# or move bin/jf to your PATH
 ```
 
 ## Usage ##
 
 ```
-jq a.json b.json ...
+jf a.json b.json ...
 ```
