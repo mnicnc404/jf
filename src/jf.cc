@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <exception>
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
@@ -12,12 +13,20 @@ int main(int argc, const char* argv[]) {
         return -1;
     }
 
-    for (++argv; *argv; ++argv){
-        std::ifstream i(*argv);
-        json j;
-        i >> j;
+    const int n = argc - 1;
+    for (int i = 1; i < argc; i++) {
+        std::cout << "[" << i << "/" << n << "] " << argv[i] << "\r";
+        try {
+            std::ifstream input(argv[i]);
+            json j;
+            input >> j;
 
-        std::ofstream o(*argv);
-        o << j.dump(4) << std::endl;
+            std::ofstream o(argv[i]);
+            o << j.dump(4) << std::endl;
+        } catch (std::exception &e) {
+            std::cerr << std::endl << "something wrong handling " << argv[i] << ": " << e.what();
+            std::cerr << "; ignoring.." << std::endl;
+        }
     }
+    std::cout << std::endl;
 }
